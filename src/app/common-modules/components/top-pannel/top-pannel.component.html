@@ -1,0 +1,140 @@
+<header class="header-wrapper">
+    <div class="container-fluid">
+        <nav class="navbar navbar-fixed-top">
+
+            <!--  Navbar Header Starts  -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand element-navbar-logo" routerLink="ehubui/domain">
+                    <img src="assets/images/logo-new.png"/>
+                    <span>Element</span>
+                </a>
+            </div>
+            <!--  Navbar Header Ends  -->
+
+            <!--  Navbar Collapse Starts  -->
+            <div id="navbar" class="collapse custom-select-wrapper navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="btn">
+                            <i class="fa fa-search nav-link-icon"></i>
+                        </a>
+                    </li>
+
+                    <li id="event-calendar-dropdown">
+                        <a class="btn" id="event-calendar-menu">
+                            <i class="fa fa-calendar nav-link-icon"></i>
+                        </a>
+                    </li>
+                    <li (click)="toggleTopPannelItems('clipboard')">
+                        <a class="btn my-clipboard-nav">
+                            <i class="fa fa-bookmark nav-link-icon"></i>
+                        </a>
+                    </li>
+                    <li (click)="toggleTopPannelItems('notification')">
+                        <a class="btn notification-menu">
+                            <i class="fa fa-bell nav-link-icon" ></i>
+                        </a>
+                    </li>
+                    <li class="dropdown dropdown-profile">
+                        <a class="dropdown-toggle clearfix" (click)="toggleTopPannelItems('useProfile')" data-toggle="dropdown" href="javascript:void(0);">
+                            <div class="pull-left user-name">
+                                <span class="log-username">Michael Ouliel</span>
+                                <span class="last-login">Last login: Feb 24, 2019, 08:03:00 PM</span>
+                            </div>
+                            <div class="pull-right user-icon">
+                                <img class="img-responsive" src="assets/images/alex.png" alt="userImg" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu profile-dropdown-menu" role="menu">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <i class="fa fa-user"></i>PROFILE
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <i class="fa fa-cog"></i>SETTINGS
+                                </a> 
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <i class="fa fa-gittip"></i>MY PREFERENCES
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://localhost:8080/ehubui/#/manage">
+                                    <i class="fa fa-server"></i>MANAGE
+                                </a>
+                            </li>
+                            <li >
+                                <a (click)="logout()" >
+                                    <i class="fa fa-sign-out"></i>LOG OUT
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--  Navbar Collapse Ends -->
+
+        </nav>
+    </div>
+
+
+<!--  Clipboard Dropdown Starts  -->
+<div class="dropdown-menu-wrapper clipboard-dropdown-menu-wrapper" *ngIf="showHideTopPannelItems.showHideClipBoard" style="height:300px;">
+    <div class="row search-clip-holder" >
+        <div class="col-sm-7 search-clip-item">
+            <h4>My Clipboard</h4>
+            <p><span>23 notes,</span><span>6 Files</span></p>
+        </div>
+        <div class="col-sm-5 text-right search-clip-item pad-x0">
+            <a>
+                <span class="fa fa-plus"></span>Note</a>
+            <a>
+                <span class="fa fa-cloud-upload"></span>Upload</a>
+        </div>
+    </div>
+    <div class="row context-menu">
+        <div class="col-sm-4 context-menu-item">
+            <div class="input-group custom-input-group pull-left">
+                <span class="input-group-addon">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input type="text" class="form-control" ng-keyup="fullTextSearch($event, $index)">
+            </div>
+        </div>
+        <div class="col-sm-4 text-right context-menu-item">
+            <div class="select-group">
+                <span class="filter-key text-uppercase">Sort By :</span>
+                <select id="displayByOrder" class="filter-value text-uppercase" ng-model="checkedValueListBy" ng-change="changeListByDropDown(checkedValue)">
+                    <option value="desc">Descending</option>
+                    <option value="asc" selected>Ascending</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4 text-right context-menu-item">
+            <div class="select-group">
+                <span class="filter-key text-uppercase">Display :</span>
+                <select id="displayByIconOrTable" class="filter-value text-uppercase" ng-model="checkedValueDisplay" ng-change="changeDropDown(checkedValue)">
+                    <option value="icon" selected="selected">Icons</option>
+                    <option value="table">Table</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  Clipboard Dropdown Ends  -->
+
+<!--  Notification Dropdown Starts -->
+<div class="dropdown-menu-wrapper notifications-dropdown-menu-wrapper" *ngIf="showHideTopPannelItems.showHideNotifications" style="height:300px;">
+    
+</div>
+<!--  Notification Dropdown End  -->
+</header>
